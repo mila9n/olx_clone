@@ -6,7 +6,8 @@ import Address from "../components/Address";
 import ProductTitle from "../components/ProductTitle";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
-const serverUrl = "http://localhost:5000/";
+import { serverUrl } from "../utils/serverurl";
+// const serverUrl = "http://localhost:5000/";
 
 const SellPage = () => {
   const { productId } = useParams();
@@ -45,8 +46,6 @@ const SellPage = () => {
       };
     });
   };
-
-  console.log(category);
 
   // uploading photos to server
   const handleUploadPhoto = async (e) => {

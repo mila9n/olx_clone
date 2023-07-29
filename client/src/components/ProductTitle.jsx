@@ -1,11 +1,4 @@
-const ProductTitle = ({
-  handleChange,
-  handleCategoryChange,
-  title,
-  description,
-  price,
-  category,
-}) => {
+const ProductTitle = ({ handleChange, title, description, price }) => {
   return (
     <>
       <div>

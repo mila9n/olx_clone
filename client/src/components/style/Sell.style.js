@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const SellPageStyle = styled.section`
-  max-width: 900px;
   width: 70%;
-  margin: 2rem auto;
+  max-width: 1200px;
+  margin: 1rem auto;
   padding: 25px 20px;
   border: 1px solid lightgray;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
