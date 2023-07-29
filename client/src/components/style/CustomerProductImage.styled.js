@@ -91,10 +91,6 @@ export const ProductImagesStyle = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* @media (max-width: 450px) {
-    grid-template-columns: repeat(2, 1fr);
-  } */
-
   @media (max-width: 374px) {
     grid-template-columns: repeat(1, 1fr);
   }

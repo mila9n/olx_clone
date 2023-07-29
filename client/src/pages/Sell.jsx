@@ -7,7 +7,6 @@ import ProductTitle from "../components/ProductTitle";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { serverUrl } from "../utils/serverurl";
-// const serverUrl = "http://localhost:5000/";
 
 const SellPage = () => {
   const { productId } = useParams();
@@ -94,6 +93,7 @@ const SellPage = () => {
       state,
       email,
       contact,
+      category,
       images: productImage,
     };
     if (!productId) {
@@ -150,6 +150,7 @@ const SellPage = () => {
             state: product.state,
             email: product.email,
             contact: product.contact,
+            category: product.category,
           });
           setProductImage(product.images);
         } catch (error) {

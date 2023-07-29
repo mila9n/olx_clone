@@ -15,6 +15,7 @@ export const newProduct = async (req, res, next) => {
       email,
       contact,
       images,
+      category,
     } = req.body;
 
     if (
@@ -26,7 +27,8 @@ export const newProduct = async (req, res, next) => {
       !state ||
       !email ||
       !contact ||
-      !images
+      !images ||
+      !category
     ) {
       return next(new ErrorHandler("Please enter all the details", 404));
     }
@@ -41,6 +43,7 @@ export const newProduct = async (req, res, next) => {
       email,
       contact,
       images,
+      category,
       user: user._id,
     };
 
@@ -103,6 +106,7 @@ export const updateProduct = async (req, res, next) => {
       contact,
       images,
       productId,
+      category,
     } = req.body;
 
     if (
@@ -115,7 +119,8 @@ export const updateProduct = async (req, res, next) => {
       !email ||
       !contact ||
       !images ||
-      !productId
+      !productId ||
+      !category
     ) {
       return next(new ErrorHandler("Please enter all the details", 404));
     }
@@ -136,6 +141,7 @@ export const updateProduct = async (req, res, next) => {
       email,
       contact,
       images,
+      category,
     });
 
     await product.save();

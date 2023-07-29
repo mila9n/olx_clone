@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ProductInformationCardStyle } from "../components/style/ProductInformationCard.style";
@@ -6,13 +6,14 @@ import ProductImageSlider from "../components/ProductImageSlider";
 import LoadingSpinner from "../components/LadingSpinner";
 import LikeButton from "../components/LikeButton";
 import { useSelector } from "react-redux";
+import { FaAngleLeft } from "react-icons/fa";
 
 const ProductInfoPage = () => {
   const [product, setProduct] = useState([]);
-  const [likedProducts, setLikedProducts] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
   const [loading, setLoading] = useState(true);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const navigate = useNavigate();
 
   // params that we are getting from router
   let { productId } = useParams();
@@ -38,27 +39,27 @@ const ProductInfoPage = () => {
       const { data } = await axios.get("/likedProduct/get", {
         withCredentials: true,
       });
-      setLikedProducts(data.likedItem.products);
+      // function call
+      likedProductCheck(data.likedItem.products);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // checking if product is liked or not
-  const likedProductCheck = () => {
-    for (let i = 0; i < likedProducts.length; i++) {
-      if (product._id == likedProducts[i].productId) {
+  // function to check if product is already liked or not
+  const likedProductCheck = (item) => {
+    for (let i = 0; i < item.length; i++) {
+      if (productId == item[i].productId) {
         setIsLiked(true);
         break;
       }
     }
   };
 
-  useEffect(() => {
-    if (likedProducts.length > 0) {
-      likedProductCheck();
-    }
-  }, [likedProducts.length]);
+  // back button
+  const handleBackClick = () => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -76,6 +77,14 @@ const ProductInfoPage = () => {
 
   return (
     <ProductInformationCardStyle>
+      <button
+        name="back-button"
+        className="back_button"
+        onClick={handleBackClick}
+      >
+        <FaAngleLeft className="back" />
+        <span>Back</span>
+      </button>
       {product.length != 0 && (
         <>
           <ProductImageSlider images={product?.images} title={product.title} />

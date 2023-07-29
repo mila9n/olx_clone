@@ -1,4 +1,10 @@
-const ProductTitle = ({ handleChange, title, description, price }) => {
+const ProductTitle = ({
+  handleChange,
+  title,
+  description,
+  price,
+  category,
+}) => {
   return (
     <>
       <div>
@@ -34,7 +40,12 @@ const ProductTitle = ({ handleChange, title, description, price }) => {
       </div>
       <div className="product_category">
         <label htmlFor="category">Category</label>
-        <select id="category" onChange={handleChange} name="category">
+        <select
+          id="category"
+          onChange={handleChange}
+          name="category"
+          value={category}
+        >
           <option value={""} hidden>
             select category
           </option>
