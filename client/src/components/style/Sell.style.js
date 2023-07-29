@@ -24,6 +24,27 @@ const SellPageStyle = styled.section`
       border: 1px solid gray;
     }
 
+    .product_category {
+      label {
+        display: table;
+      }
+      select {
+        margin: 4px 0 18px;
+        max-width: 300px;
+        width: 100%;
+        padding: 4px;
+        font-size: 15px;
+      }
+
+      option:hover {
+        background-color: black;
+      }
+
+      select > option:nth-of-type(1) {
+        color: gray;
+      }
+    }
+
     textarea {
       resize: vertical;
       height: 100px;

@@ -21,6 +21,7 @@ const SellPage = () => {
     state: "",
     email: "",
     contact: "",
+    category: "",
   });
 
   const {
@@ -32,6 +33,7 @@ const SellPage = () => {
     state,
     email,
     contact,
+    category,
   } = inputValue;
 
   const handleChange = (e) => {
@@ -43,6 +45,8 @@ const SellPage = () => {
       };
     });
   };
+
+  console.log(category);
 
   // uploading photos to server
   const handleUploadPhoto = async (e) => {
@@ -165,6 +169,7 @@ const SellPage = () => {
           title={title}
           description={description}
           price={price}
+          category={category}
         />
         <div>
           <label>Upload Photos</label>

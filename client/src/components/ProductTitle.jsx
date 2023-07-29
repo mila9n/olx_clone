@@ -1,4 +1,11 @@
-const ProductTitle = ({ handleChange, title, description, price }) => {
+const ProductTitle = ({
+  handleChange,
+  handleCategoryChange,
+  title,
+  description,
+  price,
+  category,
+}) => {
   return (
     <>
       <div>
@@ -31,6 +38,22 @@ const ProductTitle = ({ handleChange, title, description, price }) => {
           value={price}
           onChange={handleChange}
         />
+      </div>
+      <div className="product_category">
+        <label htmlFor="category">Category</label>
+        <select id="category" onChange={handleChange} name="category">
+          <option value={""} hidden>
+            select category
+          </option>
+          <option value={"electronic"}>Electronic</option>
+          <option value={"automobile"}>Auto Mobile</option>
+          <option value={"bike"}>Bike</option>
+          <option value={"book"}>Book</option>
+          <option value={"sport"}>Sport</option>
+          <option value={"job"}>Job</option>
+          <option value={"property"}>Property</option>
+          <option value={"Other "}>Other</option>
+        </select>
       </div>
     </>
   );
