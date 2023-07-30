@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const ProductsSkeletonStyle = styled.div`
-  width: 90%;
-  max-width: 1300px;
-  margin: 1rem auto;
-  padding: 1rem 0;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.5rem 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.4rem;

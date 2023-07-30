@@ -8,26 +8,6 @@ export const ProductInformationCardStyle = styled.section`
   padding: 15px;
   position: relative;
 
-  .back_button {
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    padding: 5px 10px;
-    cursor: pointer;
-
-    svg {
-      font-size: 18px;
-      transition: all 100ms ease-in-out;
-    }
-  }
-
-  .back_button:hover svg,
-  .back_button:active + .svg {
-    transform: translateX(-5px);
-  }
-
   & > .images {
     display: flex;
     width: 100%;
@@ -199,19 +179,6 @@ export const ProductInformationCardStyle = styled.section`
         font-size: 14px;
         text-transform: capitalize;
         line-height: 1.2;
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    .back_button {
-      padding: 4px 6px;
-      svg {
-        font-size: 16px;
-        transition: all 100ms ease-in-out;
-      }
-      span {
-        display: none;
       }
     }
   }

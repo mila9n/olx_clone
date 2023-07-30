@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ProductInformationCardStyle } from "../components/style/ProductInformationCard.style";
@@ -6,14 +6,13 @@ import ProductImageSlider from "../components/ProductImageSlider";
 import LoadingSpinner from "../components/LadingSpinner";
 import LikeButton from "../components/LikeButton";
 import { useSelector } from "react-redux";
-import { FaAngleLeft } from "react-icons/fa";
+import BackButton from "../components/BackButton";
 
 const ProductInfoPage = () => {
   const [product, setProduct] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
   const [loading, setLoading] = useState(true);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-  const navigate = useNavigate();
 
   // params that we are getting from router
   let { productId } = useParams();
@@ -56,11 +55,6 @@ const ProductInfoPage = () => {
     }
   };
 
-  // back button
-  const handleBackClick = () => {
-    navigate(-1);
-  };
-
   useEffect(() => {
     if (isAuthenticated) {
       fetchLikedProducts();
@@ -77,14 +71,7 @@ const ProductInfoPage = () => {
 
   return (
     <ProductInformationCardStyle>
-      <button
-        name="back-button"
-        className="back_button"
-        onClick={handleBackClick}
-      >
-        <FaAngleLeft className="back" />
-        <span>Back</span>
-      </button>
+      <BackButton />
       {product.length != 0 && (
         <>
           <ProductImageSlider images={product?.images} title={product.title} />
