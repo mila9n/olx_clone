@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProductsSkeletonStyle = styled.div`
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
   padding: 0.5rem 0;
   display: grid;

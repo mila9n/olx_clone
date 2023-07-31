@@ -14,7 +14,7 @@ const Category = () => {
   return (
     <CategoryStyle>
       <h3>Browse Category</h3>
-      <div>
+      <div className="category_items">
         <Link to={"/category/electronic"}>
           <FaLaptop />
           <span>Electronic</span>

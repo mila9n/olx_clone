@@ -84,6 +84,7 @@ const LoginPage = () => {
             placeholder="Enter Password"
             onChange={handleChange}
             required={true}
+            autoComplete="on"
           />
         </div>
         <div className="checkbox_container">

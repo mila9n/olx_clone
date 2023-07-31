@@ -96,6 +96,7 @@ const RegisterPage = () => {
             placeholder="Enter Password"
             onChange={handleChange}
             required={true}
+            autoComplete="off"
           />
         </div>
         <div className="checkbox_container">

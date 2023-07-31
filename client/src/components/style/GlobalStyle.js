@@ -16,6 +16,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: 'Poppins', sans-serif;
 }
+
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
