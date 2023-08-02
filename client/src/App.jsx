@@ -9,7 +9,6 @@ import React from "react";
 import { setAuthentication, setUser } from "../Redux/userSlice";
 import LoadingSpinner from "./components/LadingSpinner";
 import PaginatedPage from "./pages/PaginatedPage";
-// import CategoryPage from "./pages/CategoryPage";
 
 const SellPage = lazy(() => import("./pages/Sell"));
 const ProfilePage = lazy(() => import("./pages/Profile"));

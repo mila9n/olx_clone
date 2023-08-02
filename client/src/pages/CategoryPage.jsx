@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import AllProductCard from "../components/AllProductCard";
 import { AllProductStyle } from "../components/style/AllProducts.style";
