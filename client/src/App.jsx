@@ -19,7 +19,7 @@ const ProductInfoPage = lazy(() => import("./pages/ProductInfo"));
 const HomePage = lazy(() => import("./pages/Home"));
 const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 
-axios.defaults.baseURL = "http://localhost:5000/api/v1";
+axios.defaults.baseURL = "https://olx-clone-5i21.onrender.com/api/v1";
 
 function App() {
   const dispatch = useDispatch();
