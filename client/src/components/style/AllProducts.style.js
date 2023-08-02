@@ -6,6 +6,22 @@ export const AllProductStyle = styled.main`
   margin: 0.5rem auto;
   padding: 0.5rem 0 1rem;
 
+  & > .load_more_button {
+    background-color: transparent;
+    padding: 6px 15px;
+    display: flex;
+    margin: 2rem auto;
+    cursor: pointer;
+    transition: all 100ms linear;
+    box-shadow: 4px 4px 5px gray;
+
+    &:hover,
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 1px 1px 5px gray;
+    }
+  }
+
   & > .category_top {
     display: flex;
     align-items: center;

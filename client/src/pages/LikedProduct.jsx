@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const LikedProductPage = () => {
   const [likedProducts, setLikedProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(false);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
@@ -18,7 +18,7 @@ const LikedProductPage = () => {
       const { data } = await axios.get("/likedProduct/get", {
         withCredentials: true,
       });
-      setLikedProducts(data.likedItem.products);
+      setLikedProducts(data.likedItem?.products);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -46,16 +46,15 @@ const LikedProductPage = () => {
     );
   });
 
-  if (loading) {
-    return <ProductsSkeleton />;
-  }
+  const skeletonArray = Array.from(Array(3));
 
   return (
     <LikedProductsStyle>
-      {likedProducts.length == 0 ? (
+      {loading
+        ? skeletonArray.map((item, index) => <ProductsSkeleton key={index} />)
+        : likedProductsArr}
+      {!loading && likedProducts.length == 0 && (
         <span className="empty-message">{`No Liked Products.`}</span>
-      ) : (
-        likedProductsArr
       )}
     </LikedProductsStyle>
   );

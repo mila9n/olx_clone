@@ -14,7 +14,7 @@ const AllProductCard = ({
   return (
     <div className="product_card">
       <Link to={`/productInfo/${productId}`}>
-        <img src={`${serverUrl}${image}`} alt={`${title}`} />
+        <img src={`${serverUrl}${image}`} alt={`${title}`} loading="lazy" />
         <div className="product_info">
           <h2>&#8377; {price.toLocaleString()}</h2>
           <p>{title}</p>

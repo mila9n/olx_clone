@@ -1,23 +1,19 @@
-import { ProductsSkeletonStyle } from "./style/ProductSkeleton.style";
+import { ProductSkeletonCardStyle } from "./style/ProductSkeletonCard";
 
 const ProductsSkeleton = () => {
-  let arr = Array.from(Array(8));
+  // let arr = Array.from(Array(8));
 
-  let skeletons = arr.map((item, index) => {
-    return (
-      <div key={index}>
-        <div className="image skeleton-box"></div>
-        <div className="info">
-          <h2 className="skeleton-box"></h2>
-          <p className="skeleton-box"></p>
-          <p className="skeleton-box"></p>
-          <p className="skeleton-box"></p>
-        </div>
+  return (
+    <ProductSkeletonCardStyle>
+      <div className="image skeleton-box"></div>
+      <div className="info">
+        <h2 className="skeleton-box"></h2>
+        <p className="skeleton-box"></p>
+        <p className="skeleton-box"></p>
+        <p className="skeleton-box"></p>
       </div>
-    );
-  });
-
-  return <ProductsSkeletonStyle>{skeletons}</ProductsSkeletonStyle>;
+    </ProductSkeletonCardStyle>
+  );
 };
 
 export default ProductsSkeleton;

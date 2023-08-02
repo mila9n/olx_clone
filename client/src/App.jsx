@@ -8,6 +8,7 @@ import axios from "axios";
 import React from "react";
 import { setAuthentication, setUser } from "../Redux/userSlice";
 import LoadingSpinner from "./components/LadingSpinner";
+import PaginatedPage from "./pages/PaginatedPage";
 // import CategoryPage from "./pages/CategoryPage";
 
 const SellPage = lazy(() => import("./pages/Sell"));
@@ -58,6 +59,7 @@ function App() {
             <Route path="/sell/:productId" element={<SellPage />} />
             <Route path="/profile/*" element={<ProfilePage />} />
             <Route path="/category/:name" element={<CategoryPage />} />
+            <Route path="/paginatedProducts" element={<PaginatedPage />} />
             <Route
               path="/productInfo/:productId"
               element={<ProductInfoPage />}

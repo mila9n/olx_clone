@@ -6,56 +6,52 @@ import AllProductCard from "../components/AllProductCard";
 import { AllProductStyle } from "../components/style/AllProducts.style";
 import BackButton from "../components/BackButton";
 import ProductsSkeleton from "../components/ProductsSkeleton";
+import { useQuery } from "@tanstack/react-query";
 
 const CategoryPage = () => {
-  const [products, setProducts] = useState([]);
-  const [likedProducts, setLikedProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
   const { name } = useParams();
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
-  // fetch product of category
-  const fetchCategoryProduct = async () => {
-    setLoading(true);
+  const fetchProductsByCategory = async (isAuthenticated) => {
     try {
-      const { data } = await axios.get(`/productCategory/${name}`);
-      setProducts(data.products);
-      setLoading(false);
+      const categoryProductResponse = await axios.get(
+        `/productCategory/${name}`
+      );
+
+      const likedProducts =
+        isAuthenticated &&
+        (await axios.get(`/likedProduct/get`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }));
+
+      return {
+        categoryProducts: categoryProductResponse?.data?.products || [],
+        likedProducts: likedProducts?.data?.likedItem.products || [],
+      };
     } catch (error) {
-      setLoading(false);
-      console.log(error);
+      throw new Error("Something wend wrong. Please try again later");
     }
   };
 
-  // fetch liked Products
-  const fetchLikedProducts = async () => {
-    setLoading(true);
-    try {
-      const { data } = await axios.get(`/likedProduct/get`, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      });
-      setLikedProducts(data.likedItem.products);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
+  const { data, isLoading, isFetching } = useQuery(
+    ["category Products", isAuthenticated],
+    () => fetchProductsByCategory(isAuthenticated),
+    {
+      keepPreviousData: false,
     }
-  };
+  );
 
-  // loop to check whether product is liked or not
   const productsArr =
-    products.length > 0 &&
-    products.map((product) => {
-      let liked = false;
-      if (likedProducts.length > 0) {
-        for (let i = 0; i < likedProducts.length; i++) {
-          if (product._id == likedProducts[i].productId) {
-            liked = true;
-            i = likedProducts.length;
-          }
-        }
-      }
+    data &&
+    data.categoryProducts.map((product) => {
+      let liked = !data.likedProducts
+        ? false
+        : data?.likedProducts.some(
+            (likedProduct) => product._id == likedProduct.productId
+          );
       return (
         <AllProductCard
           key={product._id}
@@ -70,15 +66,7 @@ const CategoryPage = () => {
       );
     });
 
-  useEffect(() => {
-    fetchCategoryProduct();
-  }, [name]);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      fetchLikedProducts();
-    }
-  }, [isAuthenticated]);
+  const skeletonArr = Array.from(Array(4));
 
   return (
     <AllProductStyle>
@@ -86,9 +74,13 @@ const CategoryPage = () => {
         <BackButton />
         <h3 className="category_heading">Category:- {name}</h3>
       </div>
-      {loading ? (
-        <ProductsSkeleton />
-      ) : productsArr ? (
+      {isLoading || isFetching ? (
+        <section>
+          {skeletonArr.map((item, index) => (
+            <ProductsSkeleton key={index} />
+          ))}
+        </section>
+      ) : productsArr.length > 0 ? (
         <section>{productsArr}</section>
       ) : (
         <p className="no_product_message">No Product Available</p>

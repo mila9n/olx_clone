@@ -11,6 +11,8 @@ const LikeButton = ({ productId, image, price, title, liked, setRefresh }) => {
   useEffect(() => {
     if (liked) {
       setIsLiked(true);
+    } else {
+      setIsLiked(false);
     }
   }, [liked]);
 
