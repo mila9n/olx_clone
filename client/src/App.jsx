@@ -29,7 +29,7 @@ function App() {
     try {
       const { data } = await axios.get("/users/me", {
         headers: {
-          "Content-Type": "application/jason",
+          "Content-Type": "application/json",
         },
         withCredentials: true,
       });
