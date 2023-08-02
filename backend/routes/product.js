@@ -2,7 +2,6 @@ import express from "express";
 import { isAuthenticated } from "../middleware/auth.js";
 import {
   deleteProduct,
-  getAllTheProducts,
   getSearchedProduct,
   myProduct,
   newProduct,
@@ -23,9 +22,6 @@ router.put("/updateProduct", isAuthenticated, updateProduct);
 
 // to delete any of my product
 router.delete("/deleteProduct/:productId", isAuthenticated, deleteProduct);
-
-// to get all of the products
-router.get("/allProducts", getAllTheProducts);
 
 // to get searched product
 router.get("/", getSearchedProduct);

@@ -94,14 +94,18 @@ export const getLikedProduct = async (req, res, next) => {
     const user = req.user;
 
     const likedItem = await LikedProduct.findOne({ user: user._id });
-    if (!likedItem) {
-      return next(new ErrorHandler("No liked Items", 404));
+    if (likedItem) {
+      res.status(200).json({
+        success: true,
+        likedItem,
+      });
+    } else {
+      let products = [];
+      res.status(200).json({
+        success: true,
+        likedItem: { products },
+      });
     }
-
-    res.status(200).json({
-      status: true,
-      likedItem,
-    });
   } catch (error) {
     next(error);
   }

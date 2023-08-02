@@ -8,6 +8,7 @@ import productRoute from "./routes/product.js";
 import uploadRoute from "./routes/upload.js";
 import likedProductRoute from "./routes/likedProducts.js";
 import productCategoryRoute from "./routes/category.js";
+import paginatedProductsRoute from "./routes/paginatedProducts.js";
 import colors from "colors";
 import cors from "cors";
 dotenv.config({});
@@ -35,6 +36,7 @@ app.use("/api/v1/products", productRoute);
 app.use("/api/v1/upload", uploadRoute);
 app.use("/api/v1/likedProduct", likedProductRoute);
 app.use("/api/v1/productCategory", productCategoryRoute);
+app.use("/api/v1/paginatedProducts", paginatedProductsRoute);
 
 // error middleware
 app.use(errorMiddleware);

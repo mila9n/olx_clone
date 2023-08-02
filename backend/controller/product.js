@@ -173,27 +173,6 @@ export const deleteProduct = async (req, res, next) => {
   }
 };
 
-// All the product for everyone which will display on home page
-export const getAllTheProducts = async (req, res, next) => {
-  try {
-    const products = await Product.find();
-    if (!products) {
-      return next(new ErrorHandler("No Products Found, try again", 404));
-    }
-    res.status(200).json({
-      success: true,
-      products,
-    });
-  } catch (error) {
-    next(
-      new ErrorHandler(
-        "Something went wrong, please try again after some time",
-        404
-      )
-    );
-  }
-};
-
 // search Product
 export const getSearchedProduct = async (req, res, next) => {
   try {
