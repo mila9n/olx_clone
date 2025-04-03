@@ -22,7 +22,7 @@ export const HeaderStyle = styled.header`
     }
 
     .logo {
-      width: 140px;
+      width: 150px;
 
       h2 > a {
         text-decoration: none;
