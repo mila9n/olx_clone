@@ -10,7 +10,7 @@ const CustomerProductImages = ({
 }) => {
   const imageArr =
     productImage &&
-    productImage.map((image, index) => {
+    productImage?.map((image, index) => {
       return (
         <div key={image} className="image_box">
           <span

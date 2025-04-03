@@ -20,7 +20,7 @@ const Header = () => {
         <div className="logo">
           <h2>
             <Link to="/" aria-label="Logo" title="Home">
-              OLX
+              SnapBuy
             </Link>
           </h2>
         </div>
